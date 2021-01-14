@@ -68,7 +68,10 @@ def make_plot():
     if level_select.value == 'US Dollars':
         level_series = "exports"
         
-    title_name = ""    
+    title_name = ""
+    if len(country_select.value) == 1:
+        title_name = country_select.value
+    
     for name in country_select.value:
         title_name = title_name + name[0:3] + ", "
         
