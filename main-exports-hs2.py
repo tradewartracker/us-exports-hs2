@@ -69,11 +69,14 @@ def make_plot():
         level_series = "exports"
         
     title_name = ""
-    if len(country_select.value) == 1:
-        title_name = country_select.value
-    
+        
     for name in country_select.value:
-        title_name = title_name + name[0:3] + ", "
+        
+        if len(country_select.value) <= 2:
+            title_name = title_name + name + ", "
+            
+        if len(country_select.value) > 2:
+            title_name = title_name + name[0:3] + ", "
         
         
     title = "US EXPORTS to " + title_name + "of " + product_select.value.title().upper()
