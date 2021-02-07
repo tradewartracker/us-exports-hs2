@@ -24,6 +24,8 @@ from bokeh.transform import factor_cmap
 # https://github.com/bokeh/bokeh/blob/branch-2.3/examples/app/crossfilter/main.py
 #
 
+final_month = 2
+
 background = "#ffffff"
 
 file = "./data"+ "/top20-HS2-exports.parquet"
@@ -84,7 +86,7 @@ def make_plot():
     # This is standard bokeh stuff so far
     plot = figure(x_axis_type="datetime", plot_height = height, plot_width=width, toolbar_location = 'below',
            tools = "box_zoom, reset, pan, xwheel_zoom", title = title,
-                  x_range = (dt.datetime(2017,7,1),dt.datetime(2021,1,1)) )
+                  x_range = (dt.datetime(2017,7,1),dt.datetime(2021,final_month,1)) )
     
     numlines=len(country_select.value)
     
