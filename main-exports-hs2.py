@@ -24,7 +24,7 @@ from bokeh.transform import factor_cmap
 # https://github.com/bokeh/bokeh/blob/branch-2.3/examples/app/crossfilter/main.py
 #
 
-final_month = 2
+final_month = 4
 
 background = "#ffffff"
 
@@ -222,4 +222,4 @@ layout = row(make_plot(), controls, sizing_mode = "scale_height", max_height = h
 
 curdoc().add_root(layout)
 curdoc().title = "us-exports-hs2-products"
-curdoc().add_root(column(p))
+#curdoc().add_root(column(p))
