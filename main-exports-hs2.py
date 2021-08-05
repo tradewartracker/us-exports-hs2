@@ -28,7 +28,7 @@ final_month = 9
 
 background = "#ffffff"
 
-file = "./data"+ "/top20-HS2-exports.parquet"
+file = "./data"+ "/top30-HS2-exports.parquet"
 
 df = pq.read_table(file).to_pandas()
 
