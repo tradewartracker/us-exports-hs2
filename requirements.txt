@@ -11,7 +11,7 @@ idna
 jedi
 Jinja2==2.11.2
 MarkupSafe==1.1.1
-numpy
+numpy==1.23.5
 packaging
 pandas
 parso
