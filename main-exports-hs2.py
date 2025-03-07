@@ -24,7 +24,7 @@ from bokeh.transform import factor_cmap
 # https://github.com/bokeh/bokeh/blob/branch-2.3/examples/app/crossfilter/main.py
 #
 
-final_month = 5
+final_month = 7
 final_year = 2025
 
 background = "#ffffff"
@@ -48,9 +48,14 @@ level = "US Dollars"
 
 def growth_trade(foo):
     # what this function does is take a dataframe and create a relative 
-    foo["growth"] = 100*((foo["exports"]/foo["exports"].shift(12)) - 1)    
+    foo["exports_shifted"] = foo["exports"].shift(12)
+
+    foo["growth"] = 100 * ((foo["exports"] / foo["exports_shifted"]) - 1)
+
+    foo["growth"] = foo["growth"].fillna(0)
     
     return foo
+
 
 #################################################################################
 # Then this makes the simple plots:
@@ -65,10 +70,13 @@ def make_plot():
     # the list of options. So the .value then grabs that particular option selected.
         
     if level_select.value == 'Year over Year % Change':
-        foo = foo.groupby(["CTY_NAME"]).apply(growth_trade)
+
+        foo = foo.groupby(["CTY_NAME"]).apply(growth_trade).reset_index(level=0, drop=True)
+
         level_series = "growth"
         
     if level_select.value == 'US Dollars':
+        
         level_series = "exports"
         
     title_name = ""
