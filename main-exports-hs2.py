@@ -24,7 +24,7 @@ from bokeh.transform import factor_cmap
 # https://github.com/bokeh/bokeh/blob/branch-2.3/examples/app/crossfilter/main.py
 #
 
-final_month = 9
+final_month = 10
 final_year = 2025
 
 background = "#ffffff"
@@ -106,7 +106,7 @@ def make_plot():
 
     plot.multi_line(xs= "xs",
                 ys= "ys",
-                line_width=3, line_alpha=0.75, line_color = "slategray",
+                line_width=5, line_alpha=0.75, line_color = "slategray",
                 hover_line_alpha=0.75, hover_line_width = 5,
                 hover_line_color= "crimson", source = multi_line_source)
         
@@ -158,8 +158,17 @@ def make_plot():
     plot.background_fill_alpha = 0.75
     plot.border_fill_color = background 
     
-    tradewar_box = BoxAnnotation(left=dt.datetime(2020,2,1), right=dt.datetime(2020,4,30), fill_color='red', fill_alpha=0.1)
+    tradewar_box = BoxAnnotation(left=dt.datetime(2020,2,1), right=dt.datetime(2020,4,30), fill_color='blue', fill_alpha=0.1)
     plot.add_layout(tradewar_box)
+
+    liberation_box = BoxAnnotation(left=dt.datetime(2025,1,1), right=dt.datetime(final_year,final_month,1), fill_color='red', fill_alpha=0.1)
+    plot.add_layout(liberation_box)
+    
+    if "CHINA" in country_select.value:
+    
+        tradewar_box = BoxAnnotation(left=dt.datetime(2018,7,1), right=dt.datetime(2019,10,11), fill_color='red', fill_alpha=0.1)
+        
+        plot.add_layout(tradewar_box)
             
     #p.yaxis.axis_label = 
     plot.yaxis.axis_label_text_font_style = 'bold'
