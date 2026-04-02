@@ -26,7 +26,7 @@ import base64
 # https://github.com/bokeh/bokeh/blob/branch-2.3/examples/app/crossfilter/main.py
 #
 
-final_month = 5
+final_month = 8
 final_year = 2026
 
 background = "#ffffff"
